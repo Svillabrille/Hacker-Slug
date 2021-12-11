@@ -8,7 +8,7 @@ class Background  {
         this.width = 3500
         this.height = 496.5
 
-        this.speed = 3
+        this.speed = 10
 
         this.movements = {
     
@@ -45,12 +45,10 @@ class Background  {
       switch(event.keyCode) {
           case KEY_RIGHT:
               this.movements.right = status;
-              console.log('test derecha')
               break;
 
            case KEY_LEFT:
                this.movements.left = status;
-               console.log('test izquierda')
                break;
 
            default:
@@ -64,15 +62,22 @@ class Background  {
         }
 
         if (this.movements.right) {
-          this.vx = this.speed;
-          console.log('velocidad derecha')
+          this.vx = -this.speed;
 
         }
         if (this.movements.left) {
-          this.vx = -this.speed;
+          this.vx = this.speed;
         }
 
         this.x += this.vx;
+
+        if(this.x >= 0){
+          this.x = 0
+        }
+
+        if (this.x <= -this.width + this.ctx.canvas.width){
+            this.x = -this.width + this.ctx.canvas.width
+        }
 
 
     }

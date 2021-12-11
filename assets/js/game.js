@@ -38,6 +38,7 @@ class Game {
 
     draw (){
         this.background.draw()
+        //this.player.draw()
     }
 
 }
