@@ -1,2 +1,3 @@
-const KEY_RIGHT = 39
-const KEY_LEFT = 37
+const KEY_RIGHT = 68
+const KEY_LEFT = 65
+const KEY_SPACEBAR = 32

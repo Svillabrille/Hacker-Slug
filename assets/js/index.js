@@ -22,5 +22,10 @@ window.addEventListener('keyup', (event) => {
   game.setUpListeners(event)
 })
 
+window.addEventListener('keydown', (event) =>{
+  game.onKeyDown(event.keyCode)
+})
+
+
 }
 

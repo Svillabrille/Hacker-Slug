@@ -3,9 +3,9 @@ class Game {
         this.ctx = ctx
 
         this.background = new Background(ctx)
-        //this.player = new Player(ctx)
+        this.player = new Player(ctx)
 
-        this.fps = 1000 / 60
+        this.fps = 1000 / 30
         this.intervalId = undefined
 
     }
@@ -30,15 +30,24 @@ class Game {
 
     move(){
         this.background.move()
+        this.player.move()
     }
 
     setUpListeners(event) {
         this.background.setUpListeners(event)
     }
 
+    onKeyDown(keyCode) {
+        this.player.onKeyDown(keyCode)
+      }
+
+    onKeyUp(keyCode){
+        this.player.onKeyUp(keyCode)
+    }
+
     draw (){
         this.background.draw()
-        //this.player.draw()
+        this.player.draw()
     }
 
 }
