@@ -3,9 +3,19 @@ class Background  {
         this.ctx = ctx
 
         this.x = -200
+        this.vx = 0
 
         this.width = 3500
-        this.height = 331
+        this.height = 496.5
+
+        this.speed = 3
+
+        this.movements = {
+    
+            left : false,
+            right : false
+    
+        }
 
 
         this.img = new Image ()
@@ -29,8 +39,42 @@ class Background  {
         )
     }
 
-    /*move () {
-        this.x += this.vx
-    }*/
+    setUpListeners(event) {
+        const status = event.type === 'keydown';
+
+      switch(event.keyCode) {
+          case KEY_RIGHT:
+              this.movements.right = status;
+              console.log('test derecha')
+              break;
+
+           case KEY_LEFT:
+               this.movements.left = status;
+               console.log('test izquierda')
+               break;
+
+           default:
+               break;
+      }
+     }
+
+    move () {
+        if(!this.movements.right && !this.movements.left) {
+            this.vx = 0;
+        }
+
+        if (this.movements.right) {
+          this.vx = this.speed;
+          console.log('velocidad derecha')
+
+        }
+        if (this.movements.left) {
+          this.vx = -this.speed;
+        }
+
+        this.x += this.vx;
+
+
+    }
 
 }

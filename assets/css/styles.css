@@ -1,0 +1,30 @@
+html, body{
+    height: 100%;
+    text-align: center;
+    background-image: url("../img/military background.jpeg");
+}
+
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+    font-weight: bolder;
+    text-transform: uppercase;
+	background: linear-gradient( #F2c702 0%, #CA7004 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    filter: drop-shadow(3px 0px #565656);
+    line-height: 69px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#start-button {
+    margin-top: 20px;    
+}
+

@@ -6,15 +6,21 @@ window.onload = function() {
       startGame();
     };
 
-}
+const game = new Game(ctx)
 
 function startGame() {
     game.start()
   }
 
-    
-const game = new Game(ctx)
 
-function startGame() {
-    game.start()
+
+window.addEventListener('keydown', (event) => {
+  game.setUpListeners(event)
+})
+
+window.addEventListener('keyup', (event) => {
+  game.setUpListeners(event)
+})
+
 }
+
