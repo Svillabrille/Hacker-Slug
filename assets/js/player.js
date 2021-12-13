@@ -5,19 +5,15 @@ class Player {
         this.width = 40
         this.height = 52
 
-        //Cada frame son 32x42
-
         this.x = 300
         this.y = 380
 
         this.ay = 0.4
 
-
         this.img = new Image ()
         this.img.src = './assets/img/walking-sprite.png'
 
         this.img.isReady = false
-
         this.img.onload = () => {
             this.img.isReady = true
         }
@@ -97,6 +93,18 @@ class Player {
               this.running = false
             }
         } 
+
+
+    collidesWith(truck) {
+            if (
+                this.x < truck.x + truck.width &&
+                this.x + this.width > truck.x + 60 &&
+                this.y < truck.y + truck.height &&
+                this.y + this.width > truck.y +35
+            ) {
+            return true
+            }
+        }
     }
 
         /* if(this.running === true){

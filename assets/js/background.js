@@ -8,7 +8,7 @@ class Background  {
         this.width = 3500
         this.height = 496.5
 
-        this.speed = 10
+        this.speed = 15
 
         this.movements = {
     
@@ -75,11 +75,9 @@ class Background  {
           this.x = 0
         }
 
-        if (this.x <= this.ctx.canvas.width - this.width){
+        if (this.x <=  + this.ctx.canvas.width - this.width){
             this.x = this.ctx.canvas.width -this.width
         }
-
-
     }
 
 }

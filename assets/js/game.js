@@ -5,12 +5,13 @@ class Game {
         this.background = new Background(ctx)
         this.player = new Player(ctx)
         this.soldiers = [
-            new Soldier(ctx, 500),
-            new Soldier(ctx, 1000),
-            new Soldier(ctx, 1500),
-            new Soldier(ctx, 2000),
-            new Soldier(ctx, 2500),
+            new Soldier(ctx, this.background.x + this.background.width - 2900),
+            new Soldier(ctx, this.background.x + this.background.width - 2500),
+            new Soldier(ctx, this.background.x + this.background.width - 3200),
+            new Soldier(ctx, this.background.x + this.background.width - 3300),
+            new Soldier(ctx, this.background.x + this.background.width - 3250),
         ]
+        this.truck = new Truck(ctx, this.background.x + this.background.width -400)
 
         this.fps = 1000 / 30
         this.intervalId = undefined
@@ -26,6 +27,7 @@ class Game {
                 this.move()
                 
                 this.draw()
+                this.checkStageCompleted()
             }, this.fps)
 
         }
@@ -35,10 +37,18 @@ class Game {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
     }
 
+    draw (){
+        this.background.draw()
+        this.player.draw()
+        this.soldiers.forEach(soldier => soldier.draw())
+        this.truck.draw()
+    }
+
     move(){
         this.background.move()
+        this.truck.x = this.background.x + this.background.width - 400
         this.player.move()
-        this.soldiers.forEach(soldier => soldier.move())
+        this.soldiers.forEach(soldier => soldier.x = this.background.x + this.background.width)
     }
 
     setUpListeners(event) {
@@ -47,25 +57,21 @@ class Game {
 
     onKeyDown(keyCode) {
         this.player.onKeyDown(keyCode)
+        this.soldiers.forEach(soldier => soldier.onKeyDown(keyCode))
       }
 
     onKeyUp(keyCode){
         this.player.onKeyUp(keyCode)
     }
 
-    draw (){
-        this.background.draw()
-        this.player.draw()
-        this.soldiers.forEach(soldier => soldier.draw())
-    }
 
     checkStageCompleted(){
-        
-        if (this.background.x +1 <= this.ctx.canvas.width - this.background.width){
-            this.stageCompleted()
-            console.log('check finish')
+        if (this.player.collidesWith(this.truck)) {
+          this.stageCompleted()
         }
     }
+
+    
 
     stageCompleted(){
         clearInterval(this.intervalId)
