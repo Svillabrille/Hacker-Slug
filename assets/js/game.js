@@ -5,11 +5,11 @@ class Game {
         this.background = new Background(ctx)
         this.player = new Player(ctx)
         this.soldiers = [
-            new Soldier(ctx, this.background.x + this.background.width - 2900),
+            new Soldier(ctx, this.background.x + this.background.width - 200),
             new Soldier(ctx, this.background.x + this.background.width - 2500),
-            new Soldier(ctx, this.background.x + this.background.width - 3200),
-            new Soldier(ctx, this.background.x + this.background.width - 3300),
-            new Soldier(ctx, this.background.x + this.background.width - 3250),
+            new Soldier(ctx, this.background.x + this.background.width - 1000),
+            new Soldier(ctx, this.background.x + this.background.width - 1500),
+            new Soldier(ctx, this.background.x + this.background.width - 2000),
         ]
         this.truck = new Truck(ctx, this.background.x + this.background.width -400)
 
@@ -46,13 +46,24 @@ class Game {
 
     move(){
         this.background.move()
-        this.truck.x = this.background.x + this.background.width - 400
+        this.truck.x = this.background.x + this.background.width - 580
         this.player.move()
-        this.soldiers.forEach(soldier => soldier.x = this.background.x + this.background.width)
+        this.soldiers.forEach(soldier => {
+
+        
+             if(this.x <= this.ctx.canvas.width - this.width || this.x >= -130){
+                soldier.x = soldier.x
+                console.log('test soldados escapan')
+            }
+
+            
+             soldier.x += this.background.vx 
+        })
     }
 
     setUpListeners(event) {
         this.background.setUpListeners(event)
+        this.player.setUpListeners(event)
     }
 
     onKeyDown(keyCode) {

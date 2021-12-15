@@ -2,8 +2,8 @@ class Bullet {
     constructor(ctx){
         this.ctx = ctx
 
-        this.x = this.player.x
-        this.y = this.player.y
+        this.x = x
+        this.y = y
 
         this.width = 7
         this.height = 7
@@ -36,6 +36,5 @@ class Bullet {
 
 
     addEventListener(){
-      
     }
 }

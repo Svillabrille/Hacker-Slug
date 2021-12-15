@@ -71,12 +71,12 @@ class Background  {
 
         this.x += this.vx;
 
-        if(this.x >= 0){
-          this.x = 0
+        if(this.x >= -130){
+          this.x = -130
         }
 
-        if (this.x <=  + this.ctx.canvas.width - this.width){
-            this.x = this.ctx.canvas.width -this.width
+        if (this.x <= this.ctx.canvas.width - this.width){
+            this.x = this.ctx.canvas.width -this.width 
         }
     }
 

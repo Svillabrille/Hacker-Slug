@@ -2,17 +2,18 @@ class Player {
     constructor(ctx){
         this.ctx = ctx
 
+        //Sizing
         this.width = 40
         this.height = 52
 
-        this.x = 300
-        this.y = 380
+        //Map Position
+        this.x = 200
+        this.y = 390
 
         this.ay = 0.4
 
         this.img = new Image ()
-        this.img.src = './assets/img/walking-sprite.png'
-
+        this.img.src = './assets/img/walking-sprites.png'
         this.img.isReady = false
         this.img.onload = () => {
             this.img.isReady = true
@@ -21,12 +22,19 @@ class Player {
         this.vy = 0
         this.vx = 0
 
+        this.movements = {
+    
+          left : false,
+          right : false
+  
+      }
+
         this.maxY = 390
 
         this.horizontalFrames = 9
-        this.verticalFrames = 1
+        this.verticalFrames = 2
 
-        this.xFrame = 2
+        this.xFrame = 0
         this.yFrame = 0
 
         this.tick = 0
@@ -36,6 +44,13 @@ class Player {
     }
 
     draw() {
+
+      if (this.movements.left) {
+        this.yFrame = 1
+      }
+      if (this.movements.right){
+        this.yFrame = 0
+      }
         this.ctx.drawImage(
           this.img,
           (this.img.width * this.xFrame)  / this.horizontalFrames,
@@ -46,11 +61,28 @@ class Player {
           this.y,
           this.width,
           this.height
-        )
-
-    
+        )  
         this.tick++
       }
+
+
+    setUpListeners(event) {
+      const status = event.type === 'keydown';
+
+    switch(event.keyCode) {
+        case KEY_RIGHT:
+            this.movements.right = status;
+            break;
+
+         case KEY_LEFT:
+             this.movements.left = status;
+             break;
+
+         default:
+             break;
+    }
+   }
+
       move (){
 
         this.vy += this.ay
@@ -72,20 +104,28 @@ class Player {
              this.jumping = true
         }
 
-        if(keyCode === KEY_RIGHT){
-            // How fast frames run
+        if(keyCode === KEY_RIGHT && this.jumping === false){
+            // How fast frames run to the right
                 if (this.tick % 2 === 0) {
                     this.xFrame += 1
             
                     if (this.xFrame > 8) {
-                        this.xFrame = 2
+                        this.xFrame = 1
                     }
-                }
-    
-             
+                }  
         } 
+        if(keyCode === KEY_LEFT){
+          // How fast frames run ton the left
+              if (this.tick % 2 === 0) {
+                  this.xFrame += 1
+          
+                  if (this.xFrame > 7) {
+                      this.xFrame = 0
+                  }
+              }
              
         }
+      }
 
     onKeyUp(keyCode) {
         if (keyCode === KEY_RIGHT || keyCode === KEY_LEFT) {
@@ -100,7 +140,7 @@ class Player {
                 this.x < truck.x + truck.width &&
                 this.x + this.width > truck.x + 60 &&
                 this.y < truck.y + truck.height &&
-                this.y + this.width > truck.y +35
+                this.y + this.width > truck.y +33
             ) {
             return true
             }
@@ -207,5 +247,3 @@ class Player {
         } 
 
       }*/
-
-
