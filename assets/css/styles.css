@@ -18,7 +18,7 @@ html, body{
     padding-bottom: 0px;
     padding-top: 5px;
     text-transform: uppercase;
-    filter: drop-shadow(3px 0px #565656);
+    filter: drop-shadow(3px 0px black);
     line-height: 69px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -27,4 +27,23 @@ html, body{
 #start-button {
     margin-top: 20px;    
 }
+
+.plates{
+    position: absolute;
+    mix-blend-mode:multiply;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.instructions{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 400px;
+    flex-direction: column;
+    
+}
+
+
+
 

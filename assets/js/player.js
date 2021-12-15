@@ -66,15 +66,14 @@ class Player {
     }
 
     onKeyDown(keyCode) {
+        // jumps cant be stacked
         if (keyCode === KEY_SPACEBAR && !this.jumping) {
              this.vy = -6
              this.jumping = true
         }
 
         if(keyCode === KEY_RIGHT){
-/*             this.running = true
-            if(this.running === true){ */
-        
+            // How fast frames run
                 if (this.tick % 2 === 0) {
                     this.xFrame += 1
             
@@ -88,14 +87,15 @@ class Player {
              
         }
 
-        onKeyUp(keyCode) {
-            if (keyCode === KEY_RIGHT || keyCode === KEY_LEFT) {
-              this.running = false
-            }
+    onKeyUp(keyCode) {
+        if (keyCode === KEY_RIGHT || keyCode === KEY_LEFT) {
+            this.running = false
+        }
         } 
 
 
     collidesWith(truck) {
+        //numbers added so the player enters the truck
             if (
                 this.x < truck.x + truck.width &&
                 this.x + this.width > truck.x + 60 &&

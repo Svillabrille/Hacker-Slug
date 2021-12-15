@@ -10,14 +10,26 @@
   </head>
   <body>
 <!--Añadir que se tenga que pulsar Enter para empezar el juego en lugar de utiilizar un botón-->
-      <p class="center">Hacker <br/> Slug</p>
+    <div>
+      <img class="plates" src="assets/img/pngtree-dog-tag-star-decorative-tag-png-image_3959933.png" alt="Silver Plate">
+    </div>  
+    <p class="center">Hacker <br/> Slug</p>
       <br/>
     
     <div id="game-board">
       <canvas id="canvas" width="662" height="496.5"></canvas>
     </div>
-    <button id="start-button">Start Game</button>
+    <button id="start-button" class="button-30" role="button">Start Game</button>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ul>
+        <li>A key moves you backwards</li>
+        <li>D key moves you forward</li>
+        <li>Spacebar makes you jump</li>
+        <li></li>
+      </ul>
 
+    </div>
     
     <script type="text/javascript" src="./assets/js/constants.js"></script>
     <script type="text/javascript" src="./assets/js/background.js"></script>

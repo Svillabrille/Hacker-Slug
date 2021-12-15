@@ -58,11 +58,13 @@ class Game {
     onKeyDown(keyCode) {
         this.player.onKeyDown(keyCode)
         this.soldiers.forEach(soldier => soldier.onKeyDown(keyCode))
-      }
+    }
 
+   
     onKeyUp(keyCode){
         this.player.onKeyUp(keyCode)
     }
+
 
 
     checkStageCompleted(){
