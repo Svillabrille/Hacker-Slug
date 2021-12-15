@@ -19,6 +19,8 @@ class Player {
             this.img.isReady = true
         }
 
+        this.bullets = []
+
         this.vy = 0
         this.vx = 0
 
@@ -63,6 +65,8 @@ class Player {
           this.height
         )  
         this.tick++
+
+        this.bullets.forEach( bullet => bullet.draw())
       }
 
 
@@ -95,6 +99,8 @@ class Player {
           this.y = this.maxY
           this.jumping = false
         }
+        this.bullets.forEach( bullet => bullet.move())
+
     }
 
     onKeyDown(keyCode) {
@@ -145,6 +151,10 @@ class Player {
             return true
             }
         }
+
+      addBullet(){
+        this.bullets.push(new Bullet(this.ctx,this.x + this.width, this.y + (this.height/2),this.yFrame === 0))
+      }
     }
 
         /* if(this.running === true){

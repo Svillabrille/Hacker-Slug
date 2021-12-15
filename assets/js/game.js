@@ -49,12 +49,11 @@ class Game {
         this.truck.x = this.background.x + this.background.width - 580
         this.player.move()
         this.soldiers.forEach(soldier => {
-
+            //prevents soldiers from moving when you reach the limit of the map on the left side.
             if(this.background.x <= this.ctx.canvas.width - this.background.width || this.background.x >= -130){
                     this.background.vx = 0
-                console.log('test soldados escapan')
             }
-            soldier.x += this.background.vx 
+            soldier.x += this.background.vx
         })
     }
 
@@ -73,6 +72,11 @@ class Game {
         this.player.onKeyUp(keyCode)
     }
 
+    onClick(){
+        this.player.addBullet()
+    }
+
+
 
 
     checkStageCompleted(){
@@ -80,6 +84,8 @@ class Game {
           this.stageCompleted()
         }
     }
+
+  
 
     
 

@@ -26,8 +26,8 @@ window.addEventListener('keydown', (event) =>{
   game.onKeyDown(event.keyCode)
 })
 
-window.addEventListener('click', (event) =>{
-  
+canvas.addEventListener('click', (event) =>{
+  game.onClick()
 })
 
 
