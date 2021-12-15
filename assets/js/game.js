@@ -50,14 +50,11 @@ class Game {
         this.player.move()
         this.soldiers.forEach(soldier => {
 
-        
-             if(this.x <= this.ctx.canvas.width - this.width || this.x >= -130){
-                soldier.x = soldier.x
+            if(this.background.x <= this.ctx.canvas.width - this.background.width || this.background.x >= -130){
+                    this.background.vx = 0
                 console.log('test soldados escapan')
             }
-
-            
-             soldier.x += this.background.vx 
+            soldier.x += this.background.vx 
         })
     }
 
