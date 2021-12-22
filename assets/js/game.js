@@ -27,7 +27,7 @@ class Game {
                 this.move()
                 
                 this.draw()
-                this.checkStageCompleted()
+                this.checkCollision()
             }, this.fps)
 
         }
@@ -35,6 +35,8 @@ class Game {
 
     clear(){
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+        //clears all bullets that are out of the canvas
+        this.player.bullets = this.player.bullets.filter(bullet => bullet.x < this.ctx.canvas.width && bullet.x > 0)
     }
 
     draw (){
@@ -42,6 +44,7 @@ class Game {
         this.player.draw()
         this.soldiers.forEach(soldier => soldier.draw())
         this.truck.draw()
+        this.ene
     }
 
     move(){
@@ -51,11 +54,12 @@ class Game {
         this.soldiers.forEach(soldier => {
             //prevents soldiers from moving when you reach the limit of the map on the left side.
             if(this.background.x <= this.ctx.canvas.width - this.background.width || this.background.x >= -130){
-                    this.background.vx = 0
+                this.background.vx = 0
             }
             soldier.x += this.background.vx
         })
-    }
+        this.soldiers.forEach(soldier => {soldier.move()})
+        }
 
     setUpListeners(event) {
         this.background.setUpListeners(event)
@@ -64,7 +68,6 @@ class Game {
 
     onKeyDown(keyCode) {
         this.player.onKeyDown(keyCode)
-        this.soldiers.forEach(soldier => soldier.onKeyDown(keyCode))
     }
 
    
@@ -76,16 +79,56 @@ class Game {
         this.player.addBullet()
     }
 
-
-
-
-    checkStageCompleted(){
-        if (this.player.collidesWith(this.truck)) {
+    checkCollision(){
+        
+        if (this.player.collidesWith(this.truck) && this.soldiers.length === 0) {
           this.stageCompleted()
         }
+
+        this.soldiers.forEach((soldier) => {
+            this.player.bullets.forEach((bullet) => {
+                if (bullet.collidesWith(soldier)) {
+                    soldier.health = 0
+                    this.player.bullets.splice(this.bullet,1)
+                }
+            })
+        });
+        this.clearSoldiers()
+
+        this.soldiers.forEach((soldier) => {
+            soldier.enemyBullets.forEach((bullet) => {
+                if(bullet.collidesWithPlayer(this.player)) {
+                    this.gameOver()
+                }
+            })        
+        })
+
+
+
     }
 
-  
+    clearSoldiers() {
+        if(this.soldiers.length > 0){
+          this.soldiers = this.soldiers.filter(e => e.health > 0)
+        }
+      }
+
+    gameOver(){
+        clearInterval(this.intervalId)
+    
+        this.ctx.save()
+        
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.9)'
+        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+    
+        this.ctx.fillStyle = 'white'
+        this.ctx.textAlign = 'center'
+        this.ctx.font = 'bold 32px sans-serif'
+        this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
+        this.ctx.restore()
+    }
+    
+    
 
     
 

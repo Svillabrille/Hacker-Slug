@@ -1,22 +1,22 @@
-class Bullet {
-    constructor(ctx,x,y,isRightDirection){
+class EnemyBullet{
+    constructor(ctx,x,y){
         this.ctx = ctx
 
         this.x = x
         this.y = y
 
-        this.width = 7
-        this.height = 7
+        this.vx = 3
 
-
-        this.vx = isRightDirection ? 8: -8
+        this.width = 11
+        this.height = 4
 
         this.img = new Image()
-        this.img.src = './assets/img/bullet-game.png'
+        this.img.src = './assets/img/enemy-bullet.png'
         this.img.isReady = false
         this.img.onload = () => {
             this.img.isReady = true
         }
+
     }
 
     draw(){
@@ -30,17 +30,17 @@ class Bullet {
     }
 
     move(){
-        this.x += this.vx
+        this.x -= this.vx
     }
-    collidesWith(soldier) {
+
+    collidesWithPlayer(player) {
         if (
-            this.x < soldier.x + soldier.width &&
-            this.x + this.width > soldier.x &&
-            this.y < soldier.y + soldier.height &&
-            this.y + this.width > soldier.y
+            this.x < player.x + player.width &&
+            this.x + this.width > player.x &&
+            this.y < player.y + player.height &&
+            this.y + this.width > player.y
         ) {
         return true
         }
     }
-
 }

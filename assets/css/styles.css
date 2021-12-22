@@ -4,6 +4,12 @@ html, body{
     background-image: url("../img/military background.jpeg");
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
 
 
 .center{
@@ -36,12 +42,13 @@ html, body{
 }
 
 .instructions{
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
     margin-bottom: 400px;
-    flex-direction: column;
     
+}
+.game-board{
+    display: flex;
+    flex-direction: column;
+    height: 800px;
 }
 
 .button-48 {

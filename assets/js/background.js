@@ -8,7 +8,7 @@ class Background  {
         this.width = 3500
         this.height = 496.5
 
-        this.speed = 15
+        this.speed = 12
 
         this.movements = {
     
