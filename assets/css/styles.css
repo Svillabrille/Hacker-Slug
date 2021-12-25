@@ -1,20 +1,14 @@
 html, body{
     height: 100%;
-    text-align: center;
     background-image: url("../img/military background.jpeg");
+    height: 850px;
+    overflow: hidden;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-
-
-.center{
+.title{
     display: flex;
     justify-content: center;
+    text-align: center;
     font-size: 100px;
     font-weight: bolder;
     text-transform: uppercase;
@@ -39,46 +33,62 @@ body {
     mix-blend-mode:multiply;
     display: flex;
     justify-content:flex-start;
+    height: 300px;
 }
 
-.instructions{
-    margin-bottom: 400px;
-    
-}
-.game-board{
+.start-button{
     display: flex;
-    flex-direction: column;
-    height: 800px;
+    justify-content: center;
+    margin-top: 20px;    
+}
+
+.controls-and-mission {
+    padding-top: 85px;
+    width: 200px;
+}
+#game {
+    display: flex;
+    justify-content: space-evenly;
+    height: 496.5px;
+}
+
+#baguette {
+    padding-top: 17%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
 }
 
 .button-48 {
-  appearance: none;
-  background-color: #FFFFFF;
-  border-width: 0;
-  box-sizing: border-box;
-  color: #000000;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Clarkson,Helvetica,sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1em;
-  margin: 0;
-  opacity: 1;
-  outline: 0;
-  padding: 1.5em 2.2em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-rendering: geometricprecision;
-  text-transform: uppercase;
-  transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
+    appearance: none;
+    background-color: #FFFFFF;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Clarkson,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 0;
+    opacity: 1;
+    outline: 0;
+    padding: 1.5em 2.2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+    border-radius: 4px;
 }
 
 .button-48:before {

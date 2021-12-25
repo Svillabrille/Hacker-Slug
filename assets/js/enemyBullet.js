@@ -10,6 +10,13 @@ class EnemyBullet{
         this.width = 11
         this.height = 4
 
+        this.movements = {
+    
+            left : false,
+            right : false
+    
+        }        
+
         this.img = new Image()
         this.img.src = './assets/img/enemy-bullet.png'
         this.img.isReady = false
@@ -31,6 +38,34 @@ class EnemyBullet{
 
     move(){
         this.x -= this.vx
+
+        if(!this.movements.right && !this.movements.left) {
+            this.vx = 3;
+        }
+
+        if (this.movements.right) {
+          this.vx = -this.speed;
+
+        }
+        if (this.movements.left) {
+          this.vx = this.speed;
+        }
+    }
+
+    setUpListeners(event){
+        const status = event.type === 'keydown';
+
+        if(!this.movements.right && !this.movements.left) {
+            this.vx = 3;
+        }
+
+        if (this.movements.right) {
+          this.vx = -this.speed -this.background.speed;
+
+        }
+        if (this.movements.left) {
+          this.vx = this.speed;
+        }
     }
 
     collidesWithPlayer(player) {

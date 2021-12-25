@@ -14,23 +14,27 @@
       <div>
         <img class="plates" src="assets/img/pngtree-dog-tag-star-decorative-tag-png-image_3959933.png" alt="Silver Plate">
       </div>  
-        <p class="center">Hacker <br/> Slug</p>
+        <p class="title">Hacker <br/> Slug</p>
       <br/>
     </div>
-    <div id="game-board">
-      <canvas id="canvas" width="662" height="496.5"></canvas>
-    
+    <div id="game">
+      <div class="controls-and-mission">
+        <h2>Controls</h2>
+        <p></p>
+      </div>
+      <div>
+        <canvas id="canvas" width="662" height="496.5"></canvas>
+        <img id="baguette" src="./assets/img/Baguette.png" alt="Damn I´m a Baguette" style="width:33%;" />
+      </div>
+      <div class="controls-and-mission">
+        <h2>Mission</h2>
+        <p>Attention corporal! Some enemy soldiers have been spotted nearby. We need you
+          to go out there and
+        </p>
+      </div>
     </div>  
-    <div class="instructions">
-
+    <div class="start-button">
       <button id="start-button" class="button-48" role="button"><span class="text">Start Game</span></button>
-
-<!--       <h2>Instructions</h2>
-      <ul>
-        <li>A key moves you backwards</li>
-        <li>D key moves you forward</li>
-        <li>Spacebar makes you jump</li>
-      </ul> -->
     </div>
     
     <script type="text/javascript" src="./assets/js/constants.js"></script>
@@ -40,6 +44,7 @@
     <script type="text/javascript" src="./assets/js/truck.js"></script>
     <script type="text/javascript" src="./assets/js/bullet.js"></script>
     <script type="text/javascript" src="./assets/js/player.js"></script>
+    <script type="text/javascript" src="./assets/js/finishingImage.js"></script>
     <script type="text/javascript" src="./assets/js/game.js"></script>
     <script type="text/javascript" src="./assets/js/index.js"></script>
   </body>

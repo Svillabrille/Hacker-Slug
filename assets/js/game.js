@@ -12,6 +12,9 @@ class Game {
             new Soldier(ctx, this.background.x + this.background.width - 2000),
         ]
         this.truck = new Truck(ctx, this.background.x + this.background.width -400)
+        this.finishingImage = undefined
+
+        this.score = 0
 
         this.fps = 1000 / 30
         this.intervalId = undefined
@@ -44,7 +47,18 @@ class Game {
         this.player.draw()
         this.soldiers.forEach(soldier => soldier.draw())
         this.truck.draw()
-        this.ene
+        this.drawScore()
+    }
+
+    drawScore() {
+        this.ctx.save()
+    
+        this.ctx.fillStyle = 'orange'
+        this.ctx.font = ' bold 20px sans-serif'
+    
+        this.ctx.fillText(`Score: ${this.score} ptos`, 80, 40)
+    
+        this.ctx.restore()
     }
 
     move(){
@@ -64,6 +78,11 @@ class Game {
     setUpListeners(event) {
         this.background.setUpListeners(event)
         this.player.setUpListeners(event)
+        this.soldiers.forEach((soldier) => {
+            soldier.enemyBullets.forEach((bullet) => {
+                bullet.setUpListeners()
+            })        
+        })
     }
 
     onKeyDown(keyCode) {
@@ -80,21 +99,22 @@ class Game {
     }
 
     checkCollision(){
-        
+        //Checks if the game has ended
         if (this.player.collidesWith(this.truck) && this.soldiers.length === 0) {
           this.stageCompleted()
         }
-
+        //Removes the soldiers that are hit by player bullets and the bullets too
         this.soldiers.forEach((soldier) => {
             this.player.bullets.forEach((bullet) => {
                 if (bullet.collidesWith(soldier)) {
                     soldier.health = 0
                     this.player.bullets.splice(this.bullet,1)
+                    this.score++
                 }
             })
         });
         this.clearSoldiers()
-
+        //Sets Game Over if the player is hit by any eneymy bullet
         this.soldiers.forEach((soldier) => {
             soldier.enemyBullets.forEach((bullet) => {
                 if(bullet.collidesWithPlayer(this.player)) {
@@ -114,6 +134,9 @@ class Game {
       }
 
     gameOver(){
+
+        let imageType = 0;
+
         clearInterval(this.intervalId)
     
         this.ctx.save()
@@ -124,7 +147,11 @@ class Game {
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
         this.ctx.font = 'bold 32px sans-serif'
-        this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
+        this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 6)
+        
+        this.finishingImage = new FinishingImage(ctx, imageType)
+
+        clearInterval(this.intervalId)
         this.ctx.restore()
     }
     
@@ -133,6 +160,9 @@ class Game {
     
 
     stageCompleted(){
+
+        let imageType = 1
+
         clearInterval(this.intervalId)
     
         this.ctx.save()
@@ -143,7 +173,11 @@ class Game {
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
         this.ctx.font = 'bold 32px sans-serif'
-        this.ctx.fillText('Stage Completed', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
+        this.ctx.fillText('Mission Accomplished!', this.ctx.canvas.width / 2, this.ctx.canvas.height / 6)
+
+        this.finishingImage = new FinishingImage(ctx, imageType)
+
+        clearInterval(this.intervalId)
         this.ctx.restore()
     }
 

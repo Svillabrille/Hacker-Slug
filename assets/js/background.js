@@ -70,7 +70,7 @@ class Background  {
         }
 
         this.x += this.vx;
-
+        //Prevents the background from moving away from the canvas
         if(this.x >= -130){
           this.x = -130
         }

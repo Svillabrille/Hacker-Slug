@@ -89,6 +89,7 @@ class Player {
 
     move (){
 
+      //Player jumping
       this.vy += this.ay
       this.y += this.vy
 
@@ -122,7 +123,7 @@ class Player {
         }  
       } 
       if(keyCode === KEY_LEFT){
-        // How fat frames run ton the left
+        // How fast frames run to the left
         if (this.tick % 2 === 0) {
             this.xFrame += 1
     
@@ -140,23 +141,22 @@ class Player {
     }
   } 
 
-
-    collidesWith(truck) {
-        //numbers added so the player enters the truck
-      if (
-          this.x < truck.x + truck.width &&
-          this.x + this.width > truck.x + 60 &&
-          this.y < truck.y + truck.height &&
-          this.y + this.width > truck.y +33
-        ){
-      return true
-      }
+  //Checks the collision with the truck to go to the next stage
+  collidesWith(truck) {
+      //numbers added so the player enters the truck
+    if (
+        this.x < truck.x + truck.width &&
+        this.x + this.width > truck.x + 60 &&
+        this.y < truck.y + truck.height &&
+        this.y + this.width > truck.y +33
+    ){
+    return true
     }
+  }
 
-
-    addBullet(){
-      this.bullets.push(new Bullet(this.ctx,this.x + this.width, this.y + (this.height/2),this.yFrame === 0))
-    }
+  addBullet(){
+    this.bullets.push(new Bullet(this.ctx,this.x + this.width, this.y + (this.height/2),this.yFrame === 0))
+  }
 
     }
 

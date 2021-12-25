@@ -58,7 +58,7 @@ class Soldier {
         if(this.x < this.ctx.canvas.width && !this.setInterval){
             this.setInterval = setInterval(() => {
                 this.shoot()
-            }, 1000)
+            }, 2000)
         }
       }
 
