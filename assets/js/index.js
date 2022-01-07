@@ -13,7 +13,7 @@ function startGame() {
   }
 
 
-
+//Moves the map
 window.addEventListener('keydown', (event) => {
   game.setUpListeners(event)
 })

@@ -9,30 +9,45 @@
     <link rel="icon" type="image/x-icon" href="./assets/img/Bullet.png">
   </head>
   <body>
-<!--Añadir que se tenga que pulsar Enter para empezar el juego en lugar de utiilizar un botón-->
     <div>
+      <!-- top-left plates -->
       <div>
         <img class="plates" src="assets/img/pngtree-dog-tag-star-decorative-tag-png-image_3959933.png" alt="Silver Plate">
       </div>  
         <p class="title">Hacker <br/> Slug</p>
       <br/>
     </div>
-    <div id="game">
+    <!-- Instructions, canvas and mission -->
+    <div id="game-board">
       <div class="controls-and-mission">
         <h2>Controls</h2>
-        <p></p>
+        <ul id="list">
+          <li>Use A and D to move left and right respectively.</li>
+          <li>Use the spacebar to jump.</li>
+          <li>Click on the map to fire against your enemies.</li>
+        </ul>
+        <!-- <p>Use A and D to move left and right respectively.
+          <br>
+          Use the spacebar to jump.
+          <br>
+          Click on the map to fire against your enemies.
+        </p> -->
       </div>
       <div>
         <canvas id="canvas" width="662" height="496.5"></canvas>
         <img id="baguette" src="./assets/img/Baguette.png" alt="Damn I´m a Baguette" style="width:33%;" />
+        <a id="play-again" href="file:///Users/sergiovillabrillesanchez/Ironhack/Course/Modulo%201/Ironhack-Proyecto-M1/index.html"></a>
       </div>
       <div class="controls-and-mission">
         <h2>Mission</h2>
         <p>Attention corporal! Some enemy soldiers have been spotted nearby. We need you
-          to go out there and
+          to go out there and defeat them. Once the mission is accomplished, you will be able to return
+          back home in the truck. Remember, the truck wont set off until you defeat all of them.
+          Good luck!
         </p>
       </div>
     </div>  
+    <!-- Start button -->
     <div class="start-button">
       <button id="start-button" class="button-48" role="button"><span class="text">Start Game</span></button>
     </div>

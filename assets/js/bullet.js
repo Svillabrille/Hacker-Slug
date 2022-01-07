@@ -9,7 +9,8 @@ class Bullet {
         this.height = 7
 
 
-        this.vx = isRightDirection ? 8: -8
+        this.vx = isRightDirection ? 8 : -8
+
 
         this.img = new Image()
         this.img.src = './assets/img/bullet-game.png'

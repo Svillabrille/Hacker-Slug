@@ -37,35 +37,47 @@ class EnemyBullet{
     }
 
     move(){
-        this.x -= this.vx
 
         if(!this.movements.right && !this.movements.left) {
-            this.vx = 3;
+            this.x -= this.vx
         }
 
         if (this.movements.right) {
-          this.vx = -this.speed;
+            this.x -= this.vx + 4
 
         }
         if (this.movements.left) {
-          this.vx = this.speed;
+          this.x -= this.vx;
         }
     }
 
     setUpListeners(event){
         const status = event.type === 'keydown';
 
-        if(!this.movements.right && !this.movements.left) {
+        switch(event.keyCode) {
+            case KEY_RIGHT:
+                this.movements.right = status;
+                break;
+  
+             case KEY_LEFT:
+                 this.movements.left = status;
+                 break;
+  
+             default:
+                 break;
+        }
+
+/*         if(!this.movements.right && !this.movements.left) {
             this.vx = 3;
         }
 
         if (this.movements.right) {
-          this.vx = -this.speed -this.background.speed;
+          this.vx = -this.vx -10;
 
         }
         if (this.movements.left) {
           this.vx = this.speed;
-        }
+        } */
     }
 
     collidesWithPlayer(player) {

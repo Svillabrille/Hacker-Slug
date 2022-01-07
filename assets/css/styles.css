@@ -43,10 +43,20 @@ html, body{
 }
 
 .controls-and-mission {
-    padding-top: 85px;
-    width: 200px;
+    margin-top: 120px;
+    padding: 30px;
+    width: 300px;
+    height: 200px;
+    background-image: url('../img/burntPaper.png');
+    background-position-x: center;
+    background-position-y: center;
 }
-#game {
+
+.controls-and-mission > h2 {
+    text-align: center;
+}
+
+#game-board {
     display: flex;
     justify-content: space-evenly;
     height: 496.5px;
@@ -59,6 +69,12 @@ html, body{
     left: 50%;
     display: none;
 }
+
+#play-again {
+    display: none;
+}
+
+/* Code to display the cool start button from here on */
 
 .button-48 {
     appearance: none;
@@ -104,20 +120,31 @@ html, body{
   transform: translateZ(0);
   transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
   width: 100%;
+  border-radius: 4px;
 }
 
 .button-48:hover:before {
   animation: opacityFallbackIn 0s step-start forwards;
   clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+  border-radius: 4px;
 }
 
 .button-48:after {
   background-color: #FFFFFF;
+  border-radius: 4px;
 }
 
 .button-48 span {
   z-index: 1;
   position: relative;
+}
+
+#list{
+    list-style: none;
+}
+
+#list li:before {
+    content: "\2192 \0020";
 }
 
 

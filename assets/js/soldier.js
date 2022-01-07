@@ -24,9 +24,6 @@ class Soldier {
 
         this.enemyBullets = []
         
-
-
-
         this.horizontalFrames = 6
         this.verticalFrames = 1
 

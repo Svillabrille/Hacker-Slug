@@ -4,6 +4,8 @@ class Game {
 
         this.background = new Background(ctx)
         this.player = new Player(ctx)
+
+        //Creates the amount of soldiers that you want in the positions indicated
         this.soldiers = [
             new Soldier(ctx, this.background.x + this.background.width - 200),
             new Soldier(ctx, this.background.x + this.background.width - 2500),
@@ -11,9 +13,12 @@ class Game {
             new Soldier(ctx, this.background.x + this.background.width - 1500),
             new Soldier(ctx, this.background.x + this.background.width - 2000),
         ]
+        //set up the truck to collide with
         this.truck = new Truck(ctx, this.background.x + this.background.width -400)
-        this.finishingImage = undefined
 
+        //images that are loaded when winning or losing
+        this.finishingImage = undefined
+        
         this.score = 0
 
         this.fps = 1000 / 30
@@ -56,7 +61,7 @@ class Game {
         this.ctx.fillStyle = 'orange'
         this.ctx.font = ' bold 20px sans-serif'
     
-        this.ctx.fillText(`Score: ${this.score} ptos`, 80, 40)
+        this.ctx.fillText(`Score: ${this.score} points`, 80, 40)
     
         this.ctx.restore()
     }
@@ -72,15 +77,17 @@ class Game {
             }
             soldier.x += this.background.vx
         })
+        //this is used to iterate in the soldier sprite
         this.soldiers.forEach(soldier => {soldier.move()})
         }
 
     setUpListeners(event) {
         this.background.setUpListeners(event)
         this.player.setUpListeners(event)
+        //Should make the bullets move when pressing the right key
         this.soldiers.forEach((soldier) => {
             soldier.enemyBullets.forEach((bullet) => {
-                bullet.setUpListeners()
+                bullet.setUpListeners(event)
             })        
         })
     }
@@ -103,6 +110,7 @@ class Game {
         if (this.player.collidesWith(this.truck) && this.soldiers.length === 0) {
           this.stageCompleted()
         }
+
         //Removes the soldiers that are hit by player bullets and the bullets too
         this.soldiers.forEach((soldier) => {
             this.player.bullets.forEach((bullet) => {
@@ -114,6 +122,7 @@ class Game {
             })
         });
         this.clearSoldiers()
+
         //Sets Game Over if the player is hit by any eneymy bullet
         this.soldiers.forEach((soldier) => {
             soldier.enemyBullets.forEach((bullet) => {
@@ -122,9 +131,6 @@ class Game {
                 }
             })        
         })
-
-
-
     }
 
     clearSoldiers() {
@@ -153,11 +159,7 @@ class Game {
 
         clearInterval(this.intervalId)
         this.ctx.restore()
-    }
-    
-    
-
-    
+    } 
 
     stageCompleted(){
 
