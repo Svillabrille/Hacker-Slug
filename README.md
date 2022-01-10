@@ -32,6 +32,7 @@ Your mission and instructions will be displayed beside the game so dont worry ab
 
 <a href="https://sergiovs93.github.io/Hacker-Slug/" rel="nofollow">
 
+Play the game
 
 **Good luck and have fun!**
 
