@@ -30,6 +30,9 @@ Good luck!
 
 Your mission and instructions will be displayed beside the game so dont worry about forgetting about them.
 
+<a href="https://sergiovs93.github.io/Hacker-Slug/" rel="nofollow">
+
+
 **Good luck and have fun!**
 
 # Developer feedback
