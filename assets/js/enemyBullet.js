@@ -66,18 +66,6 @@ class EnemyBullet{
              default:
                  break;
         }
-
-/*         if(!this.movements.right && !this.movements.left) {
-            this.vx = 3;
-        }
-
-        if (this.movements.right) {
-          this.vx = -this.vx -10;
-
-        }
-        if (this.movements.left) {
-          this.vx = this.speed;
-        } */
     }
 
     collidesWithPlayer(player) {

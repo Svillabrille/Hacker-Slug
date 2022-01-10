@@ -36,15 +36,18 @@ class Game {
                 
                 this.draw()
                 this.checkCollision()
-            }, this.fps)
+            },  this.fps)
 
         }
     }
 
     clear(){
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
-        //clears all bullets that are out of the canvas
+        //clears all bullets that are out of the canvas for the player and soldiers.
         this.player.bullets = this.player.bullets.filter(bullet => bullet.x < this.ctx.canvas.width && bullet.x > 0)
+        this.soldiers.forEach((soldier) => {
+            soldier.enemyBullets.filter((bullet) => bullet.x < this.ctx.canvas.width && bullet.x > 0)        
+        })    
     }
 
     draw (){
@@ -84,7 +87,7 @@ class Game {
     setUpListeners(event) {
         this.background.setUpListeners(event)
         this.player.setUpListeners(event)
-        //Should make the bullets move when pressing the right key
+        //Make the bullets move when pressing the right key
         this.soldiers.forEach((soldier) => {
             soldier.enemyBullets.forEach((bullet) => {
                 bullet.setUpListeners(event)
@@ -153,7 +156,9 @@ class Game {
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
         this.ctx.font = 'bold 32px sans-serif'
-        this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 6)
+        this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 8)
+        this.ctx.fillText(`You scored: ${this.score} points`, this.ctx.canvas.width / 2, this.ctx.canvas.height / 5)
+
         
         this.finishingImage = new FinishingImage(ctx, imageType)
 
@@ -171,11 +176,14 @@ class Game {
         
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.9)'
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+
     
         this.ctx.fillStyle = 'white'
         this.ctx.textAlign = 'center'
         this.ctx.font = 'bold 32px sans-serif'
-        this.ctx.fillText('Mission Accomplished!', this.ctx.canvas.width / 2, this.ctx.canvas.height / 6)
+        this.ctx.fillText('Mission Accomplished!', this.ctx.canvas.width / 2, this.ctx.canvas.height / 8)
+        this.ctx.fillText(`You scored: ${this.score} points`, this.ctx.canvas.width / 2, this.ctx.canvas.height / 5)
+
 
         this.finishingImage = new FinishingImage(ctx, imageType)
 

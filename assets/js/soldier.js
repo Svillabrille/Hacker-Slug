@@ -55,7 +55,7 @@ class Soldier {
         if(this.x < this.ctx.canvas.width && !this.setInterval){
             this.setInterval = setInterval(() => {
                 this.shoot()
-            }, 2000)
+            }, 3000)
         }
       }
 
@@ -79,28 +79,6 @@ class Soldier {
     shoot(){
         this.enemyBullets.push(new EnemyBullet(this.ctx, this.x+(this.width/2), this.y+(this.height/2), this.yFrame === 0))
     }
-
- 
-    
-
-    /* onKeyDown(keyCode) {
-
-
-        if(this.x < 662){
-/*             this.running = true
-            if(this.running === true){ 
-        
-                if (this.tick % 2 === 0) {
-                    this.xFrame += 1
-            
-                    if (this.xFrame > 5) {
-                        this.xFrame = 0
-                    }
-                }
-    
-             
-        } 
- */
 
     }
 
