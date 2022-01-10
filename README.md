@@ -1,8 +1,8 @@
-~~#Hacker Slug~~
+**# Hacker Slug**
 
 Hacker Slug is a version of the popular game Metal Slug.
 
-![MetalSlug]("https://www.comunidadxbox.com/wp-content/uploads/2020/06/metal-slug-2020-consolas.jpg")
+![MetalSlug](https://www.comunidadxbox.com/wp-content/uploads/2020/06/metal-slug-2020-consolas.jpg)
 
 In the version you are about to play, you are the main character of "Metal Slug", a blonde chiselled jaw soldier that has been deployed on an unknown territory to defeat 5 enemies using a powerful weapon, which fires bullets that on contact with enemies will make them vanish away...and their belongings.
 
@@ -15,14 +15,14 @@ If you lose, you have to reload the page to play again.
 Please don´t get upset if you lose, it is just a game.
 
 
-~~##Your mission:~~
+**## Your mission:**
 
 Attention corporal! Some enemy soldiers have been spotted nearby. We need you
 to go out there and defeat them. Once the mission is accomplished, you will be able to return
 back home in the truck. Remember, the truck wont set off until you defeat all of them.
 Good luck!
 
-~~##Quick instructions:~~
+**## Quick instructions:**
 
 1. Use A and D to move left and right respectively.
 2. Use the spacebar to jump.
@@ -30,9 +30,9 @@ Good luck!
 
 Your mission and instructions will be displayed beside the game so dont worry about forgetting about them.
 
-~~Good luck and have fun!~~
+**Good luck and have fun!**
 
-~~#Developer feeback~~
+**# Developer feeback**
 
 My main Goal was to recreate the original game as it was and more or less i achieved that, saving the distances of course. The game had loads of interactions, movements and sprites that only a few of them were displayed on Hacker Slug.
 
